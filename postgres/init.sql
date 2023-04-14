@@ -44,7 +44,7 @@ CREATE TYPE Items AS (
 
 
 CREATE TABLE IF NOT EXISTS Orders (
-                                      order_uid varchar(50),
+                                      order_uid varchar(50) PRIMARY KEY,
                                       track_number varchar(100),
                                       entry varchar(10),
                                       delivery Delivery,

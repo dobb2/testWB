@@ -1,9 +1,22 @@
 version: "3.9"
 
 services:
-  postgres:
+
+  nats-streaming:
+    container_name: nats-streaming
+    image: nats-streaming:0.25.3-alpine
     restart: unless-stopped
-    image: postgres:latest
+    ports:
+      - "4222:4222"
+    command:
+      - "--cluster_id=test-cluster-wb"
+      - "--max_msgs=100"
+      - "--max_bytes=100000024"
+      - "-max_subs=10"
+  postgres:
+    container_name: postgres
+    restart: unless-stopped
+    image: postgres:15-alpine3.17
     environment:
       POSTGRES_DB: "testWB"
       POSTGRES_USER: "dobb2"
@@ -12,3 +25,20 @@ services:
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/1.sql
     ports:
       - "54320:5432"
+
+
+
+
+#  sub-client-app:
+#    container_name: go-sub-clien-app
+#    restart: unless-stopped
+#    image: golang:1.20.3-bullseye
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - postgres
+#      - nats-streaming
+
+
+
+
