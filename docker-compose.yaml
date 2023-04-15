@@ -29,16 +29,3 @@ services:
 
 
 
-#  sub-client-app:
-#    container_name: go-sub-clien-app
-#    restart: unless-stopped
-#    image: golang:1.20.3-bullseye
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - postgres
-#      - nats-streaming
-
-
-
-

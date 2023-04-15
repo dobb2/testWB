@@ -55,8 +55,8 @@ func main() {
 		sc.Publish("Order", data)
 		log.Println("published message on channel: Order")
 	}
-
-	for i := 0; i < 10; i++ {
+	// send bad data to nats
+	for i := 0; i < 2; i++ {
 		sc.Publish("Order", []byte("bad data"))
 		log.Println("published message on channel: Order")
 	}

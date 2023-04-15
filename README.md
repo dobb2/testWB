@@ -13,7 +13,7 @@ docker-compose up --build
 ```
 
 ### run srcipt
-Running a script that sends the correct json data to nats-streaming
+Running a script that reads json data from a file and sends it to nats-streaming
 
 ```
 go run cmd/pub-client/main.go

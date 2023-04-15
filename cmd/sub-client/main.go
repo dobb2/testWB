@@ -84,6 +84,7 @@ func main() {
 
 	r.Route("/getOrder", func(r chi.Router) {
 		r.Get("/{id}", handler.GetOrderByID)
+		r.Get("/", handler.GetOrderByID)
 	})
 
 	log.Fatal(http.ListenAndServe(conf.Address, r))
